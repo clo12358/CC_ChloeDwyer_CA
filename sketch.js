@@ -4,12 +4,12 @@ let cleanData = [];
 let numRows;
 
 function preload() {
-  data = loadTable("data/combined.csv", "csv", "header");
+  data = loadTable("data/DrivingTestFails.csv", "csv", "header");
 }
 
 function setup() {
   background(50);
-  createCanvas(550, 600);
+  createCanvas(700, 700);
 
   numRows = data.rows.length;
   for (let i = 0; i < numRows; i++) {
@@ -22,7 +22,7 @@ function setup() {
     data: cleanData,
     chartWidth: 400,
     chartHeight: 300,
-    xPos: 50,
+    xPos: 100,
     yPos: 450,
     axisLineColour: "#FFF",
     labelTextSize: 15,
@@ -31,7 +31,7 @@ function setup() {
     labelRotation: 45,
     barWidth: 15,
     yValue: "Total",
-    xValue: "Age_Group",
+    xValue: "Year",
   };
 
   //barCharts.push(new BarChart(cleanData,80,80,50,350,"#ff0000"));
@@ -42,5 +42,8 @@ function setup() {
 
 function draw() {
   background(50);
+  fill("#fff");
+  textSize(40);
+  text("Driving Test Fails", 180, 80);
   barCharts.forEach((bar) => bar.render());
 }
