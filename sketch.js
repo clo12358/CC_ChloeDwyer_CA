@@ -10,6 +10,7 @@ function preload() {
 function setup() {
   background(50);
   createCanvas(700, 700);
+  angleMode(DEGREES);
 
   numRows = data.rows.length;
   for (let i = 0; i < numRows; i++) {
@@ -20,9 +21,9 @@ function setup() {
 
   let barChart01 = {
     data: cleanData,
-    chartWidth: 400,
+    chartWidth: 350,
     chartHeight: 300,
-    xPos: 100,
+    xPos: 120,
     yPos: 450,
     axisLineColour: "#FFF",
     labelTextSize: 15,
@@ -32,6 +33,9 @@ function setup() {
     barWidth: 15,
     yValue: "Total",
     xValue: "Year",
+    xLabel: "Year",
+    yLabel: "Amount of fails",
+    xyLabelRotation: 90,
   };
 
   //barCharts.push(new BarChart(cleanData,80,80,50,350,"#ff0000"));
