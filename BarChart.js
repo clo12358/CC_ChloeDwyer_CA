@@ -14,6 +14,7 @@ class BarChart {
     this.barWidth = obj.barWidth;
     this.yValue = obj.yValue;
     this.xValue = obj.xValue;
+    this.chartTitle = obj.chartTitle;
     this.xLabel = obj.xLabel;
     this.yLabel = obj.yLabel;
     this.xyLabelRotation = obj.xyLabelRotation;
@@ -39,6 +40,7 @@ class BarChart {
     // Year Label
     noStroke();
     textSize(18);
+    text(this.chartTitle,100, -320);
     text(this.xLabel, 105, 65);
     for (let i = 0; i < this.data.length; i++) {
       //Draws rectangle bars
