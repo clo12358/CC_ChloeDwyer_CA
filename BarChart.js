@@ -18,6 +18,7 @@ class BarChart {
     this.xLabel = obj.xLabel;
     this.yLabel = obj.yLabel;
     this.xyLabelRotation = obj.xyLabelRotation;
+    this.barColour = obj.barColour;
   }
 
   render() {
@@ -45,7 +46,7 @@ class BarChart {
     for (let i = 0; i < this.data.length; i++) {
       //Draws rectangle bars
       stroke(255);
-      fill("#f7fa9d");
+      fill(this.barColour);
 
       rect(0, 0, this.barWidth, -this.data[i][this.yValue] * scale);
 

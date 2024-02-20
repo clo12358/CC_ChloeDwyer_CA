@@ -18,6 +18,7 @@ class HorizontalBarChart {
     this.xLabel = obj.yLabel;
     this.yLabel = obj.xLabel;
     this.xyLabelRotation = obj.xyLabelRotation;
+    this.barColour = obj.barColour;
   }
 
   render() {
@@ -31,7 +32,6 @@ class HorizontalBarChart {
       (this.chartHeight - this.data.length * this.barWidth) / (this.data.length + 1);
       let labels = this.data.map((d) => d[this.yValue]);
       let scale = this.chartWidth / max(this.data.map((d) => d[this.xValue]));
-    // 
 
     //This loop draws the horizontal elements, bars and labels
     push();
@@ -45,8 +45,7 @@ class HorizontalBarChart {
     for (let i = 0; i < this.data.length; i++) {
       //Draws rectangle bars
       stroke(255);
-      fill("#f7fa9d");
-
+      fill(this.barColour);
       rect(0,0, this.data[i][this.xValue] * scale, -this.barWidth);
 
       //Draws labels
@@ -67,9 +66,9 @@ class HorizontalBarChart {
 
     //This draws the horizontal elements
     let tickGap = this.chartHeight / 5;
-    let tickValue = max(this.data.map((d) => d[this.yValue])) / 5;
+    let tickValue = max(this.data.map((d) => d[this.xValue])) / 5;
 
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i <= 6; i++) {
       stroke(255);
       line(i * tickGap, 0, i * tickGap, 20);
       textSize(this.labelTextSize);
