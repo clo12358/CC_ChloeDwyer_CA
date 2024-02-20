@@ -1,4 +1,4 @@
-class HorizontalBarChart {
+class StackedBarChart {
   constructor(obj) {
     this.data = obj.data;
     this.chartWidth = obj.chartWidth;
@@ -12,76 +12,86 @@ class HorizontalBarChart {
     this.labelColour = obj.labelColour;
     this.labelRotation = obj.labelRotation;
     this.barWidth = obj.barWidth;
-    this.yValue = obj.xValue;
-    this.xValue = obj.yValue;
+    this.yValue = obj.yValue;
+    this.xValue = obj.xValue;
     this.chartTitle = obj.chartTitle;
-    this.xLabel = obj.yLabel;
-    this.yLabel = obj.xLabel;
+    this.xLabel = obj.xLabel;
+    this.yLabel = obj.yLabel;
     this.xyLabelRotation = obj.xyLabelRotation;
     this.barColour = obj.barColour;
   }
+
 
   render() {
     push();
     translate(this.xPos, this.yPos);
     stroke(this.axisLineColour);
-    line(0,0,this.chartWidth,0);
-    line(0,0,0,-this.chartHeight);
+    line(0, 0, 0, -this.chartHeight);
+    line(0, 0, this.chartWidth, 0);
 
     let gap =
-      (this.chartHeight - this.data.length * this.barWidth) / (this.data.length + 1);
-      let labels = this.data.map((d) => d[this.yValue]);
-      let scale = this.chartWidth / max(this.data.map((d) => d[this.xValue]));
+      (this.chartWidth - this.data.length * this.barWidth) /
+      (this.data.length + 1);
+    let labels = this.data.map((d) => d[this.xValue]);
+    let scale = this.chartHeight / max(this.data.map((d) => d[this.yValue]));
+
+    // console.log(this.yValue);
 
     //This loop draws the horizontal elements, bars and labels
     push();
-    translate(0,-gap);
+    translate(gap, 0);
 
-    // Amount of Fails labels
+    // Year Label
     noStroke();
     textSize(18);
-    text(this.chartTitle, 120, -300);
-    text(this.xLabel, 105, 80);
+    text(this.chartTitle,100, -320);
+    text(this.xLabel, 105, 65);
     for (let i = 0; i < this.data.length; i++) {
       //Draws rectangle bars
       stroke(255);
       fill(this.barColour);
-      rect(0,0, this.data[i][this.xValue] * scale, -this.barWidth);
+
+      for( let j = 0; j < this.yValue.length; j++) {
+        console.log(this.data[i][this.yValue[j]])
+        rect(0, 0, this.barWidth, -this.data[j][this.yValue] * scale);
+      }
+
+      // rect(0, 0, this.barWidth, -this.data[i][this.yValue] * scale);
 
       //Draws labels
       textSize(this.labelTextSize);
       noStroke();
       fill(this.labelColour);
-      textAlign(RIGHT, CENTER);
+      textAlign(LEFT, CENTER);
 
       push();
-      translate(-this.labelPadding, -this.barWidth / 2);
-      // rotate(this.labelRotation);
+      translate(this.barWidth / 2, this.labelPadding);
+      rotate(this.labelRotation);
       text(labels[i], 0, 0);
       pop();
 
-      translate(0, -gap - this.barWidth);
+      translate(gap + this.barWidth, 0);
     }
     pop();
 
-    //This draws the horizontal elements
-    let tickGap = this.chartWidth / 5;
-    let tickValue = max(this.data.map((d) => d[this.xValue])) / 5;
+    //This draws the vertical elements
+    let tickGap = this.chartHeight / 5;
+    let tickValue = max(this.data.map((d) => d[this.yValue])) / 5;
 
     for (let i = 0; i <= 5; i++) {
       stroke(255);
-      line(i * tickGap, 0, i * tickGap, 20);
+      line(0, -i * tickGap, -20, -i * tickGap);
       textSize(this.labelTextSize);
       noStroke();
       fill(this.labelColour);
-      textAlign(CENTER, BOTTOM);
-      text(round(tickValue * i), i * tickGap, 40);
+      textAlign(RIGHT, CENTER);
+      text(round(tickValue*i), -20, -i * tickGap);
     }
 
-    // Year Label
+    // Amount of fails label
     rotate(this.xyLabelRotation);
     textSize(18);
-    text(this.yLabel, -150, 85);
+    text(this.yLabel, -90, 85);
     pop();
   }
 }

@@ -73,9 +73,9 @@ function setup() {
     labelColour: "#FFF",
     labelRotation: 45,
     barWidth: 30,
-    yValue: "22 - 25 years",
+    yValue: ["16 - 21 years", "22 - 25 years"],
     xValue: "Year",
-    chartTitle: "22 - 25 years",
+    chartTitle: "16 - 21 years & 22 - 25 years",
     xLabel: "Year",
     yLabel: "Amount of fails",
     xyLabelRotation: 90,
@@ -84,7 +84,7 @@ function setup() {
 
   barCharts.push(new BarChart(barChart01));
   barCharts.push(new HorizontalBarChart(barChart02));
-  barCharts.push(new BarChart(barChart03));
+  barCharts.push(new StackedBarChart(barChart03));
 }
 
 function draw() {
