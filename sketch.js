@@ -30,7 +30,7 @@ function setup() {
     labelPadding: 10,
     labelColour: "#FFF",
     labelRotation: 45,
-    barWidth: 15,
+    barWidth: 30,
     yValue: "Total",
     xValue: "Year",
     chartTitle: "Total",
@@ -50,7 +50,7 @@ function setup() {
     labelPadding: 10,
     labelColour: "#FFF",
     labelRotation: 45,
-    barWidth: 15,
+    barWidth: 30,
     yValue: "16 - 21 years",
     xValue: "Year",
     chartTitle: "16 - 21 Years",
@@ -61,7 +61,7 @@ function setup() {
 
   //barCharts.push(new BarChart(cleanData,80,80,50,350,"#ff0000"));
   barCharts.push(new BarChart(barChart01));
-  barCharts.push(new BarChart(barChart02));
+  barCharts.push(new HorizontalBarChart(barChart02));
   // barCharts.push(new BarChart(cleanData,200,200,250,450,"#d9d9d9"));
   //barCharts.push(new BarChart(cleanData,400,400,50,450,"#d9d9d9"))
 }
