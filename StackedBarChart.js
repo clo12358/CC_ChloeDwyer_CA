@@ -18,8 +18,7 @@ class StackedBarChart {
     this.xLabel = obj.xLabel;
     this.yLabel = obj.yLabel;
     this.xyLabelRotation = obj.xyLabelRotation;
-    this.barColour = obj.barColour;
-    this.colourPallete = ["#5b9bd5", "#70ae47", "#fdcc03", "#f90402"];
+    this.colourPallete = ["#c8dbfa", "#f2d3a0"];
   }
 
 
@@ -45,9 +44,6 @@ class StackedBarChart {
 
     let labels = this.data.map((d) => d[this.xValue]);
     let scale = this.chartHeight / dataMax;
-    // let scale = this.chartHeight / max(this.data.map((d) => d[this.yValue]));
-
-    // console.log(this.yValue);
 
     //This loop draws the horizontal elements, bars and labels
     push();
@@ -56,24 +52,18 @@ class StackedBarChart {
     // Year Label
     noStroke();
     textSize(18);
-    text(this.chartTitle,100, -320);
-    text(this.xLabel, 105, 65);
+    text(this.chartTitle,40, -320);
+    text(this.xLabel, 130, 65);
     for (let i = 0; i < this.data.length; i++) {
       //Draws rectangle bars
       stroke(255);
-      fill(this.barColour);
-
       push();
       for( let j = 0; j < this.yValue.length; j++) {
-        console.log(this.data[i][this.yValue[j]] * scale)
         fill(this.colourPallete[j])
         rect(0, 0, this.barWidth, -this.data[i][this.yValue[j]] * scale);
         translate(0, -this.data[i][this.yValue[j]] * scale);
-        // translate(this.barWidth, 0);
       }
       pop();
-
-      // rect(0, 0, this.barWidth, -this.data[i][this.yValue] * scale);
 
       //Draws labels
       textSize(this.labelTextSize);
