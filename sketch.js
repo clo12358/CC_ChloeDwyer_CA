@@ -2,10 +2,10 @@ let barCharts = [];
 let data;
 let cleanData = [];
 let numRows;
-let totalColour = "#f7fa9d";
-let stColour = "#c8dbfa";
-let ttColour = "#f2d3a0";
-let plusColour = "#dfb1fc";
+let totalColour = "#9b7ede";
+let stColour = "#ff6978";
+let ttColour = "#0b7a75";
+let plusColour = "#6ab547";
 
 function preload() {
   data = loadTable("data/DrivingTestFails.csv", "csv", "header");
@@ -42,7 +42,7 @@ function setup() {
     xLabel: "Year",
     yLabel: "Amount of fails",
     xyLabelRotation: 90,
-    barColour: "#f7fa9d",
+    barColour: "#9b7ede",
   };
 
   // Horizontal Bar Chart
@@ -64,7 +64,7 @@ function setup() {
     xLabel: "Year",
     yLabel: "Amount of fails",
     xyLabelRotation: 90,
-    barColour: "#c8dbfa",
+    barColour: "#ff6978",
   };
 
   // Stacked Bar Chart
@@ -86,13 +86,12 @@ function setup() {
     xLabel: "Year",
     yLabel: "Amount of fails",
     xyLabelRotation: 90,
-    barColour: "#cbfac8",
   };
 
   // Grouped Bar Chart
   let barChart04 = {
     data: cleanData,
-    chartWidth: 710,
+    chartWidth: 450,
     chartHeight: 300,
     xPos: 120,
     yPos: 950,
@@ -101,7 +100,7 @@ function setup() {
     labelPadding: 10,
     labelColour: "#FFF",
     labelRotation: 45,
-    barWidth: 30,
+    barWidth: 15,
     yValue: ["16 - 21 years", "22 - 25 years", "26 years +"],
     xValue: "Year",
     chartTitle: "16 - 21 years & 26 years +",

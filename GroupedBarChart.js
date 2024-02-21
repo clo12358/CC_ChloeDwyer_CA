@@ -18,7 +18,7 @@ class GroupedBarChart{
       this.yLabel = obj.yLabel;
       this.xLabel = obj.xLabel;
       this.xyLabelRotation = obj.xyLabelRotation;
-      this.colourPallete = ["#c8dbfa", "#f2d3a0", "#dfb1fc"];
+      this.colourPallete = ["#ff6978", "#0b7a75", "#6ab547"];
   }
 
   render(){
@@ -28,7 +28,7 @@ class GroupedBarChart{
       line (0,0,0,-this.chartHeight);
       line (0,0,this.chartWidth,0);
 
-      let gap = (this.chartWidth - (this.data.length * this.barWidth))/(this.data.length +15)
+      let gap = (this.chartWidth - (this.data.length * this.barWidth))/(this.data.length +7)
 
        // This get the max data which we use to get a new scale formula
       let dataMax = 0;

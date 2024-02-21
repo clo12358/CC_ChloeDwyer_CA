@@ -18,7 +18,7 @@ class StackedBarChart {
     this.xLabel = obj.xLabel;
     this.yLabel = obj.yLabel;
     this.xyLabelRotation = obj.xyLabelRotation;
-    this.colourPallete = ["#c8dbfa", "#f2d3a0"];
+    this.colourPallete = ["#ff6978", "#0b7a75"];
   }
 
 
