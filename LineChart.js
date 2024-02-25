@@ -1,4 +1,4 @@
-class StackedBarChart {
+class LineChart {
   constructor(obj) {
     this.data = obj.data;
     this.chartWidth = obj.chartWidth;
@@ -18,9 +18,9 @@ class StackedBarChart {
     this.xLabel = obj.xLabel;
     this.yLabel = obj.yLabel;
     this.xyLabelRotation = obj.xyLabelRotation;
-    this.colourPallete = ["#ff6978", "#0b7a75", "#6ab547"];
+    this.lineColour = obj.lineColour;
+    this.lineThickness = obj.lineThickness;
   }
-
 
   render() {
     push();
@@ -32,59 +32,50 @@ class StackedBarChart {
     let gap =
       (this.chartWidth - this.data.length * this.barWidth) /
       (this.data.length + 1);
-
-    let dataMax = 0;
-    let dataMaxs = []; 
-
-    for (let i = 0; i < this.yValue.length; i++) {
-      dataMaxs.push(max(this.data.map((row) => +row[this.yValue[i]])));
-    }
-
-    dataMax = dataMaxs.reduce((t, s) => t + s, 0);
-
     let labels = this.data.map((d) => d[this.xValue]);
-    let scale = this.chartHeight / dataMax;
+    let scale = this.chartHeight / max(this.data.map((d) => d[this.yValue]));
 
     //This loop draws the horizontal elements, bars and labels
     push();
-    translate(gap, 0);
+    translate(gap + this.barWidth / 2, 0);
 
     // Year Label
     noStroke();
     textSize(18);
-    text(this.chartTitle,5, -320);
-    text(this.xLabel, 130, 65);
+    text(this.chartTitle,100, -320);
+    text(this.xLabel, 105, 65);
+    // Begin drawing the line chart
+    // noFill();
+    beginShape();
     for (let i = 0; i < this.data.length; i++) {
-      //Draws rectangle bars
-      stroke(255);
-      push();
-      for( let j = 0; j < this.yValue.length; j++) {
-        fill(this.colourPallete[j])
-        rect(0, 0, this.barWidth, -this.data[i][this.yValue[j]] * scale);
-        translate(0, -this.data[i][this.yValue[j]] * scale);
-      }
-      pop();
+      // Draws the lines
+      stroke(this.lineColour);
+      noFill();
+      strokeWeight(this.lineThickness);
 
-      //Draws labels
+      let x = i * (gap + this.barWidth);
+      let y = -this.data[i][this.yValue] * scale;
+      vertex(x, y);
+      endShape();
+
+      // Draws labels
       textSize(this.labelTextSize);
       noStroke();
       fill(this.labelColour);
-      textAlign(LEFT, CENTER);
+      textAlign(CENTER,CENTER);
 
       push();
-      translate(this.barWidth / 2, this.labelPadding);
-      rotate(this.labelRotation);
-      text(labels[i], 0, 0);
+      translate(0, this.labelPadding);
+      // rotate(this.labelRotation);
+      text(labels[i], x, 0);
       pop();
-
-      translate(gap + this.barWidth, 0);
-      // translate(gap + this.barWidth * this.yValue.length, 0);
     }
+    // endShape();
     pop();
 
     //This draws the vertical elements
     let tickGap = this.chartHeight / 5;
-    let tickValue = dataMax / 5;
+    let tickValue = max(this.data.map((d) => d[this.yValue])) / 5;
 
     for (let i = 0; i <= 5; i++) {
       stroke(255);
