@@ -25,28 +25,29 @@ class HorizontalBarChart {
     push();
     translate(this.xPos, this.yPos);
     stroke(this.axisLineColour);
-    line(0,0,this.chartWidth,0);
-    line(0,0,0,-this.chartHeight);
+    line(0, 0, this.chartWidth, 0);
+    line(0, 0, 0, -this.chartHeight);
 
     let gap =
-      (this.chartHeight - this.data.length * this.barWidth) / (this.data.length + 1);
-      let labels = this.data.map((d) => d[this.yValue]);
-      let scale = this.chartWidth / max(this.data.map((d) => d[this.xValue]));
+      (this.chartHeight - this.data.length * this.barWidth) /
+      (this.data.length + 1);
+    let labels = this.data.map((d) => d[this.yValue]);
+    let scale = this.chartWidth / max(this.data.map((d) => d[this.xValue]));
 
     //This loop draws the horizontal elements, bars and labels
     push();
-    translate(0,-gap);
+    translate(0, -gap);
 
     // Amount of Fails labels
     noStroke();
     textSize(18);
-    text(this.chartTitle, 120, -300);
+    text(this.chartTitle, 5, -300);
     text(this.xLabel, 105, 80);
     for (let i = 0; i < this.data.length; i++) {
       //Draws rectangle bars
       stroke(255);
       fill(this.barColour);
-      rect(0,0, this.data[i][this.xValue] * scale, -this.barWidth);
+      rect(0, 0, this.data[i][this.xValue] * scale, -this.barWidth);
 
       //Draws labels
       textSize(this.labelTextSize);

@@ -41,7 +41,7 @@ class BarChart {
     // Year Label
     noStroke();
     textSize(18);
-    text(this.chartTitle,100, -320);
+    text(this.chartTitle, 20, -320);
     text(this.xLabel, 105, 65);
     for (let i = 0; i < this.data.length; i++) {
       //Draws rectangle bars
@@ -77,7 +77,7 @@ class BarChart {
       noStroke();
       fill(this.labelColour);
       textAlign(RIGHT, CENTER);
-      text(round(tickValue*i), -20, -i * tickGap);
+      text(round(tickValue * i), -20, -i * tickGap);
     }
 
     // Amount of fails label

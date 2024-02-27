@@ -21,7 +21,6 @@ class StackedBarChart {
     this.colourPallete = ["#ff6978", "#0b7a75", "#6ab547"];
   }
 
-
   render() {
     push();
     translate(this.xPos, this.yPos);
@@ -34,7 +33,7 @@ class StackedBarChart {
       (this.data.length + 1);
 
     let dataMax = 0;
-    let dataMaxs = []; 
+    let dataMaxs = [];
 
     for (let i = 0; i < this.yValue.length; i++) {
       dataMaxs.push(max(this.data.map((row) => +row[this.yValue[i]])));
@@ -52,14 +51,14 @@ class StackedBarChart {
     // Year Label
     noStroke();
     textSize(18);
-    text(this.chartTitle,5, -320);
+    text(this.chartTitle, -30, -320);
     text(this.xLabel, 130, 65);
     for (let i = 0; i < this.data.length; i++) {
       //Draws rectangle bars
       stroke(255);
       push();
-      for( let j = 0; j < this.yValue.length; j++) {
-        fill(this.colourPallete[j])
+      for (let j = 0; j < this.yValue.length; j++) {
+        fill(this.colourPallete[j]);
         rect(0, 0, this.barWidth, -this.data[i][this.yValue[j]] * scale);
         translate(0, -this.data[i][this.yValue[j]] * scale);
       }
@@ -93,7 +92,7 @@ class StackedBarChart {
       noStroke();
       fill(this.labelColour);
       textAlign(RIGHT, CENTER);
-      text(round(tickValue*i), -20, -i * tickGap);
+      text(round(tickValue * i), -20, -i * tickGap);
     }
 
     // Amount of fails label

@@ -42,10 +42,9 @@ class LineChart {
     // Year Label
     noStroke();
     textSize(18);
-    text(this.chartTitle,100, -320);
+    text(this.chartTitle, 10, -320);
     text(this.xLabel, 105, 65);
     // Begin drawing the line chart
-    // noFill();
     beginShape();
     for (let i = 0; i < this.data.length; i++) {
       // Draws the lines
@@ -62,15 +61,13 @@ class LineChart {
       textSize(this.labelTextSize);
       noStroke();
       fill(this.labelColour);
-      textAlign(CENTER,CENTER);
+      textAlign(CENTER, CENTER);
 
       push();
       translate(0, this.labelPadding);
-      // rotate(this.labelRotation);
       text(labels[i], x, 0);
       pop();
     }
-    // endShape();
     pop();
 
     //This draws the vertical elements
@@ -84,7 +81,7 @@ class LineChart {
       noStroke();
       fill(this.labelColour);
       textAlign(RIGHT, CENTER);
-      text(round(tickValue*i), -20, -i * tickGap);
+      text(round(tickValue * i), -20, -i * tickGap);
     }
 
     // Amount of fails label

@@ -38,7 +38,7 @@ function setup() {
     barWidth: 30,
     yValue: "Total",
     xValue: "Year",
-    chartTitle: "Total",
+    chartTitle: "Total amount of driving test fails",
     xLabel: "Year",
     yLabel: "Amount of fails",
     xyLabelRotation: 90,
@@ -60,7 +60,7 @@ function setup() {
     barWidth: 30,
     yValue: "16 - 21 years",
     xValue: "Year",
-    chartTitle: "16 - 21 Years",
+    chartTitle: "Amount of fails between the ages of 16 and 21",
     xLabel: "Year",
     yLabel: "Amount of fails",
     xyLabelRotation: 90,
@@ -82,7 +82,7 @@ function setup() {
     barWidth: 30,
     yValue: ["16 - 21 years", "22 - 25 years", "26 years +"],
     xValue: "Year",
-    chartTitle: "16 - 21 years, 22 - 25 years & 26 Years +",
+    chartTitle: "Amount of fails between all the age groups",
     xLabel: "Year",
     yLabel: "Amount of fails",
     xyLabelRotation: 90,
@@ -103,7 +103,7 @@ function setup() {
     barWidth: 15,
     yValue: ["16 - 21 years", "22 - 25 years", "26 years +"],
     xValue: "Year",
-    chartTitle: "16 - 21 years & 26 years +",
+    chartTitle: "Amount of fails between all the age groups",
     xLabel: "Year",
     yLabel: "Amount of fails",
     xyLabelRotation: 90,
@@ -124,7 +124,7 @@ function setup() {
     barWidth: 30,
     yValue: "Total",
     xValue: "Year",
-    chartTitle: "Total",
+    chartTitle: "Total amount of driving test fails",
     xLabel: "Year",
     yLabel: "Amount of fails",
     xyLabelRotation: 90,
@@ -146,7 +146,7 @@ function setup() {
     barWidth: 30,
     yValue: ["16 - 21 years", "22 - 25 years"],
     xValue: "Year",
-    chartTitle: "16 - 21 years, 22 - 25 years",
+    chartTitle: "Amount of fails between the ages of 16-22 and 22-25",
     xLabel: "Year",
     yLabel: "Amount of fails",
     xyLabelRotation: 90,
@@ -193,6 +193,6 @@ function draw() {
 
   fill("#fff");
   textSize(40);
-  text("Driving Test Fails", 180, 80);
+  text("Driving Test Fails between the years of 2017 and 2022", 300, 80);
   barCharts.forEach((bar) => bar.render());
 }
