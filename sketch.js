@@ -132,11 +132,32 @@ function setup() {
     lineThickness: 2,
   };
 
+  let barChart06 = {
+    data: cleanData,
+    chartWidth: 350,
+    chartHeight: 300,
+    xPos: 1220,
+    yPos: 950,
+    axisLineColour: "#FFF",
+    labelTextSize: 15,
+    labelPadding: 10,
+    labelColour: "#FFF",
+    labelRotation: 45,
+    barWidth: 30,
+    yValue: ["16 - 21 years", "22 - 25 years"],
+    xValue: "Year",
+    chartTitle: "16 - 21 years, 22 - 25 years",
+    xLabel: "Year",
+    yLabel: "Amount of fails",
+    xyLabelRotation: 90,
+  };
+
   barCharts.push(new BarChart(barChart01));
   barCharts.push(new HorizontalBarChart(barChart02));
   barCharts.push(new StackedBarChart(barChart03));
   barCharts.push(new GroupedBarChart(barChart04));
   barCharts.push(new LineChart(barChart05));
+  barCharts.push(new FullStackedBarChart(barChart06));
 }
 
 function draw() {
